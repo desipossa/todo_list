@@ -2,8 +2,8 @@ import React, { useCallback } from 'react'
 
 const List = ({ list, setList }) => {
 
-    const onDelete = useCallback(idx => {
-        const nlist = list.filter(it => idx !== it.id);
+    const onDelete = useCallback(date => {
+        const nlist = list.filter(it => date !== it.date);
         setList(nlist);
     }, [list])
     return (
@@ -11,8 +11,8 @@ const List = ({ list, setList }) => {
             {
                 list.map((it, idx) => {
                     return (
-                        <li key={idx}>{it.id} {it.name} {it.content}
-                            <button onClick={() => onDelete(it.id)}>DEL</button>
+                        <li key={idx}>{it.id} {it.name} {it.subject} {it.content} {it.date.toLocaleString().slice(11, 21)}
+                            <button onClick={() => onDelete(it.date)}>DEL</button>
                         </li>
                     )
                 })
