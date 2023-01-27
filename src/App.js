@@ -1,25 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import List from './component/List'
+import Write from './component/Write'
 
-function App() {
+const App = () => {
+  const [input, setInput] = useState({});
+  const [list, setList] = useState([
+    { id: 1, name: "01", content: "text" }
+  ])
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <List list={list} setList={setList} />
+      <Write input={input} setInput={setInput} list={list} setList={setList} />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
